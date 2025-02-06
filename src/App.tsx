@@ -73,6 +73,7 @@ function App() {
   const handleResetGame = (): void => {
     setIsFinish("");
     setBoard([]);
+    setIsX(true);
   };
 
   useEffect(() => {
@@ -87,36 +88,45 @@ function App() {
       borderRadius={"10px"}
       bgcolor={"#fff"}
     >
-      <Box>
-        <Typography color="primary" fontWeight={500} fontSize={"3rem"}>
-          Tic Tac Toe Game
-        </Typography>
-        <Typography fontWeight={500} fontSize={"2rem"}>
-          X - O
-        </Typography>
-        <Typography fontWeight={500} fontSize={"2rem"}>
-          {score.X} : {score.O}
-        </Typography>
-      </Box>
+      <Typography color="secondary" fontWeight={500} fontSize={"3rem"}>
+        Tic Tac Toe
+      </Typography>
 
-      <Stack alignItems={"start"}>
-        <Typography
-          color="error"
-          fontWeight={500}
-          variant="caption"
-          fontSize={"1rem"}
-        >
-          WINNER: {isFinish}
-        </Typography>
-        <Typography color="textPrimary" variant="caption" fontSize={"1rem"}>
-          Next:{" "}
-          {isX ? (
-            <Close color="primary" sx={{ fontSize: "0.8rem" }} />
-          ) : (
-            <PanoramaFishEye color="warning" sx={{ fontSize: "0.8rem" }} />
-          )}
-        </Typography>
-      </Stack>
+      <Typography
+        fontWeight={500}
+        fontSize={"2rem"}
+        display={"inline-flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        letterSpacing={5}
+      >
+        <Close color="primary" sx={{ fontSize: "3rem", margin: 1 }} />
+        {score.X} : {score.O}
+        <PanoramaFishEye color="warning" sx={{ fontSize: "3rem", margin: 1 }} />
+      </Typography>
+
+      <Typography
+        color="error"
+        fontWeight={500}
+        variant="caption"
+        fontSize={"2rem"}
+        bgcolor={isFinish && "#ffebee"}
+        width={"100%"}
+      >
+        WINNER : {isFinish}
+      </Typography>
+
+      <Typography
+        color="textPrimary"
+        variant="caption"
+        fontSize={"1rem"}
+        display={"inline-flex"}
+        alignItems={"center"}
+        fontWeight={500}
+      >
+        Next:{" "}
+        {isX ? <Close color="primary" /> : <PanoramaFishEye color="warning" />}
+      </Typography>
 
       <Grid2
         container
@@ -156,7 +166,7 @@ function App() {
 
       <Box>
         <Button variant="outlined" onClick={handleResetGame}>
-          Reset The Game
+          Reset Game
         </Button>
       </Box>
     </Stack>
