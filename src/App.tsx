@@ -83,10 +83,10 @@ function App() {
     <Stack p={{ xs: "10%", sm: "20%" }} spacing={2} alignItems={"start"}>
       <Box>
         <Typography color="primary" fontWeight={500} fontSize={"3rem"}>
-          X --- O
+          X - O
         </Typography>
         <Typography color="primary" fontWeight={500} fontSize={"3rem"}>
-          {score.X} --- {score.O}
+          {score.X} : {score.O}
         </Typography>
         <Typography color="error" fontWeight={500} fontSize={"3rem"}>
           WINNER: {isFinish}
