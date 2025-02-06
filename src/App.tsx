@@ -80,26 +80,44 @@ function App() {
   }, [checkWin, isFinish]);
 
   return (
-    <Stack p={{ xs: "10%", sm: "20%" }} spacing={2} alignItems={"start"}>
+    <Stack
+      p={{ xs: "10%" }}
+      spacing={2}
+      border={"solid 1px #555"}
+      borderRadius={"10px"}
+      bgcolor={"#fff"}
+    >
       <Box>
         <Typography color="primary" fontWeight={500} fontSize={"3rem"}>
+          Tic Tac Toe Game
+        </Typography>
+        <Typography fontWeight={500} fontSize={"2rem"}>
           X - O
         </Typography>
-        <Typography color="primary" fontWeight={500} fontSize={"3rem"}>
+        <Typography fontWeight={500} fontSize={"2rem"}>
           {score.X} : {score.O}
         </Typography>
-        <Typography color="error" fontWeight={500} fontSize={"3rem"}>
+      </Box>
+
+      <Stack alignItems={"start"}>
+        <Typography
+          color="error"
+          fontWeight={500}
+          variant="caption"
+          fontSize={"1rem"}
+        >
           WINNER: {isFinish}
         </Typography>
-      </Box>
-      <Typography color="textPrimary" variant="caption" fontSize={"2rem"}>
-        Next:{" "}
-        {isX ? (
-          <Close color="primary" sx={{ fontSize: "1rem" }} />
-        ) : (
-          <PanoramaFishEye color="warning" sx={{ fontSize: "1rem" }} />
-        )}
-      </Typography>
+        <Typography color="textPrimary" variant="caption" fontSize={"1rem"}>
+          Next:{" "}
+          {isX ? (
+            <Close color="primary" sx={{ fontSize: "0.8rem" }} />
+          ) : (
+            <PanoramaFishEye color="warning" sx={{ fontSize: "0.8rem" }} />
+          )}
+        </Typography>
+      </Stack>
+
       <Grid2 container border={"solid 1px #555"} borderRadius={"10px"} p={2}>
         <Grid2 size={4} p={1}>
           <StyledButton value={board[1]} onClick={() => handleClick(1)} />
@@ -130,7 +148,11 @@ function App() {
         </Grid2>
       </Grid2>
 
-      <Button onClick={handleResetGame}>Reset The Game</Button>
+      <Box>
+        <Button variant="outlined" onClick={handleResetGame}>
+          Reset The Game
+        </Button>
+      </Box>
     </Stack>
   );
 }
