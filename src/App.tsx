@@ -145,7 +145,7 @@ function App() {
         border={"solid 1px #555"}
         borderRadius={"10px"}
         p={2}
-        bgcolor={isFinish && "#f1f1f1"}
+        bgcolor={isFinish && "#f5f5f5"}
       >
         <Grid2 size={4} p={1}>
           <StyledButton value={board[1]} onClick={() => handleClick(1)} />
@@ -186,10 +186,11 @@ function App() {
         <DialogContent>
           <Typography
             fontWeight={500}
-            fontSize={"2rem"}
+            fontSize={"1rem"}
             justifyContent={"center"}
             display={"flex"}
             variant="caption"
+            mb={3}
           >
             Which player is first ?
           </Typography>
