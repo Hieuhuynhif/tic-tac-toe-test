@@ -6,18 +6,30 @@ import "@fontsource/roboto/700.css";
 import "./App.css";
 
 import { Close, PanoramaFishEye } from "@mui/icons-material";
-import { Box, Button, Grid2, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Dialog,
+  DialogContent,
+  Grid2,
+  Stack,
+  Typography,
+} from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
 import StyledButton from "./components/StyledButton";
 
 function App() {
   const [board, setBoard] = useState<Array<"X" | "O" | undefined>>([]);
-  const [isX, setIsX] = useState(true);
+  const [isX, setIsX] = useState<boolean | undefined>(undefined);
   const [isFinish, setIsFinish] = useState<"X" | "O" | "">("");
   const [score, setScore] = useState<{ X: number; O: number }>({
     X: 0,
     O: 0,
   });
+
+  const handleSelectFirst = (value: boolean): void => {
+    setIsX(value);
+  };
 
   const handleClick = (index: number) => {
     if (!board[index] && !isFinish) {
@@ -73,7 +85,7 @@ function App() {
   const handleResetGame = (): void => {
     setIsFinish("");
     setBoard([]);
-    setIsX(true);
+    setIsX(undefined);
   };
 
   useEffect(() => {
@@ -169,6 +181,28 @@ function App() {
           Reset Game
         </Button>
       </Box>
+
+      <Dialog open={isX === undefined} fullWidth>
+        <DialogContent>
+          <Typography
+            fontWeight={500}
+            fontSize={"2rem"}
+            justifyContent={"center"}
+            display={"flex"}
+            variant="caption"
+          >
+            Which player is first ?
+          </Typography>
+          <Stack direction={"row"} justifyContent={"center"} spacing={3}>
+            <Button variant="outlined" onClick={() => handleSelectFirst(true)}>
+              <Close color="primary" />{" "}
+            </Button>
+            <Button variant="outlined" onClick={() => handleSelectFirst(false)}>
+              <PanoramaFishEye color="warning" />
+            </Button>
+          </Stack>
+        </DialogContent>
+      </Dialog>
     </Stack>
   );
 }
