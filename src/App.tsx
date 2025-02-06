@@ -118,7 +118,13 @@ function App() {
         </Typography>
       </Stack>
 
-      <Grid2 container border={"solid 1px #555"} borderRadius={"10px"} p={2}>
+      <Grid2
+        container
+        border={"solid 1px #555"}
+        borderRadius={"10px"}
+        p={2}
+        bgcolor={isFinish && "#f1f1f1"}
+      >
         <Grid2 size={4} p={1}>
           <StyledButton value={board[1]} onClick={() => handleClick(1)} />
         </Grid2>
