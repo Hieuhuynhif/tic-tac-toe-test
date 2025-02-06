@@ -10,7 +10,8 @@ import {
   Box,
   Button,
   Dialog,
-  DialogContent,
+  DialogActions,
+  DialogTitle,
   Grid2,
   Stack,
   Typography,
@@ -183,26 +184,25 @@ function App() {
       </Box>
 
       <Dialog open={isX === undefined} fullWidth>
-        <DialogContent>
-          <Typography
-            fontWeight={500}
-            fontSize={"1rem"}
-            justifyContent={"center"}
-            display={"flex"}
-            variant="caption"
-            mb={3}
+        <DialogTitle>Which player is first ?</DialogTitle>
+        <DialogActions
+          sx={{ p: 3, width: "100%", justifyContent: "space-around" }}
+        >
+          <Button
+            variant="outlined"
+            onClick={() => handleSelectFirst(true)}
+            size="large"
           >
-            Which player is first ?
-          </Typography>
-          <Stack direction={"row"} justifyContent={"center"} spacing={3}>
-            <Button variant="outlined" onClick={() => handleSelectFirst(true)}>
-              <Close color="primary" />{" "}
-            </Button>
-            <Button variant="outlined" onClick={() => handleSelectFirst(false)}>
-              <PanoramaFishEye color="warning" />
-            </Button>
-          </Stack>
-        </DialogContent>
+            <Close color="primary" />{" "}
+          </Button>
+          <Button
+            variant="outlined"
+            onClick={() => handleSelectFirst(false)}
+            size="large"
+          >
+            <PanoramaFishEye color="warning" />
+          </Button>
+        </DialogActions>
       </Dialog>
     </Stack>
   );
