@@ -2,7 +2,7 @@
 
 ## Production: https://tic-tac-toe-hieuhuynh.vercel.app/
 
-### Require: NodeJs, yarn are set up
+### Require: NodeJs, Yarn are set up
 
 ### Clone this project via github link: https://github.com/Hieuhuynhif/tic-tac-toe-test.git
 
