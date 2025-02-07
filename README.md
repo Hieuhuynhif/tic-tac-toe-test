@@ -10,8 +10,9 @@
 
 ### At root folder, run command:
 
---- yarn install
---- yarn run dev
+#### yarn install
+
+#### yarn run dev
 
 The Game will run at http://localhost:5173
 
