@@ -46,52 +46,52 @@ function App() {
     return;
   };
 
-  const checkWin = useCallback((): void => {
-    const winCases = [
-      [1, 2, 3],
-      [4, 5, 6],
-      [7, 8, 9],
-      [1, 4, 7],
-      [2, 5, 8],
-      [3, 6, 9],
-      [1, 5, 9],
-      [3, 5, 7],
-    ];
-
-    for (let index = 0; index < winCases.length; index++) {
-      const element = winCases[index];
-      const [x, y, z] = element;
-
-      if (board[x] && board[x] === board[y] && board[x] === board[z]) {
-        setIsFinish(board[x]);
-
-        const newScore = { ...score };
-
-        switch (board[x]) {
-          case "X":
-            newScore.X++;
-            setScore(newScore);
-            break;
-          case "O":
-            newScore.O++;
-            setScore(newScore);
-            break;
-          default:
-            break;
-        }
-      }
-    }
-  }, [board, score]);
-
-  const handleResetGame = (): void => {
+  const handleResetGame = useCallback((): void => {
     setIsFinish("");
     setBoard([]);
     setIsX(undefined);
-  };
+  }, []);
 
   useEffect(() => {
+    const checkWin = (): void => {
+      const winCases = [
+        [1, 2, 3],
+        [4, 5, 6],
+        [7, 8, 9],
+        [1, 4, 7],
+        [2, 5, 8],
+        [3, 6, 9],
+        [1, 5, 9],
+        [3, 5, 7],
+      ];
+
+      for (let index = 0; index < winCases.length; index++) {
+        const element = winCases[index];
+        const [x, y, z] = element;
+
+        if (board[x] && board[x] === board[y] && board[x] === board[z]) {
+          setIsFinish(board[x]);
+
+          const newScore = { ...score };
+
+          switch (board[x]) {
+            case "X":
+              newScore.X++;
+              setScore(newScore);
+              break;
+            case "O":
+              newScore.O++;
+              setScore(newScore);
+              break;
+            default:
+              break;
+          }
+        }
+      }
+    };
+
     if (!isFinish) checkWin();
-  }, [checkWin, isFinish]);
+  }, [board, isFinish, score]);
 
   return (
     <Stack
